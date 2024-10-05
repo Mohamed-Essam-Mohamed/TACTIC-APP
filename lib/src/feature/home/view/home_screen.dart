@@ -28,7 +28,8 @@ class HomeScreen extends StatelessWidget {
           ContainerTileWidget(
             nameMatch: "match title 1",
             onTapChat: () {
-              Navigator.of(context).pushNamed(ChatScreen.routeName);
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ChatScreen()));
             },
             onTapTactic: () {},
           ),

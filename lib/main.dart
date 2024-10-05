@@ -25,8 +25,6 @@ void main() async {
     initRoute = ButtonNavigationBarScreen.routeName;
   }
 
-  await FirebaseAuth.instance
-      .sendPasswordResetEmail(email: "esammww.com@gmail.com");
   runApp(TacTicZone(
     initRoute: initRoute,
   ));
@@ -54,7 +52,6 @@ class TacTicZone extends StatelessWidget {
             ForGetPassword.routeName: (context) => ForGetPassword(),
             ButtonNavigationBarScreen.routeName: (context) =>
                 const ButtonNavigationBarScreen(),
-            ChatScreen.routeName: (context) => const ChatScreen(),
           },
         );
       },
