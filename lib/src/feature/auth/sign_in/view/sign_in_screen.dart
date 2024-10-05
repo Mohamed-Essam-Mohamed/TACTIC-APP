@@ -32,7 +32,7 @@ class SignInScreen extends StatelessWidget {
 
           if (state is ErrorSignInViewModel) {
             Navigator.pop(context);
-            return AppDialog.showMessage(
+            return AppDialog.showMessageError(
                 context: context, message: state.message);
           }
           if (state is SuccessSignInViewModel) {

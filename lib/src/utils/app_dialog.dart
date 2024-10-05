@@ -31,7 +31,7 @@ class AppDialog {
     );
   }
 
-  static void showMessage(
+  static void showMessageError(
       {required BuildContext context, required String message}) {
     showDialog(
       context: context,
@@ -66,6 +66,55 @@ class AppDialog {
                 "OK",
                 style: GoogleFonts.poppins(
                   fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                  color: AppColor.blackColor,
+                ),
+              ),
+            ),
+          ],
+        );
+      }),
+    );
+  }
+
+  static void showMessage(
+      {required BuildContext context, required String message}) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: ((context) {
+        return AlertDialog(
+          backgroundColor: AppColor.primaryColor,
+          title: Text(
+            "success".toUpperCase(),
+            style: GoogleFonts.acme(
+              fontSize: 25.sp,
+              fontWeight: FontWeight.bold,
+              color: AppColor.withColor,
+            ),
+          ),
+          content: Expanded(
+            child: Text(
+              message,
+              style: GoogleFonts.acme(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w500,
+                color: AppColor.withColor,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 3,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "OK",
+                style: GoogleFonts.poppins(
+                  fontSize: 15.sp,
                   fontWeight: FontWeight.w500,
                   color: AppColor.blackColor,
                 ),

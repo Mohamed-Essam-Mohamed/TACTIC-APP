@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +24,9 @@ void main() async {
   if (getToken != null) {
     initRoute = ButtonNavigationBarScreen.routeName;
   }
+
+  await FirebaseAuth.instance
+      .sendPasswordResetEmail(email: "esammww.com@gmail.com");
   runApp(TacTicZone(
     initRoute: initRoute,
   ));
@@ -45,7 +51,7 @@ class TacTicZone extends StatelessWidget {
             StartScreen.routeName: (context) => const StartScreen(),
             SignInScreen.routeName: (context) => SignInScreen(),
             SignUpScreen.routeName: (context) => SignUpScreen(),
-            ForGetPassword.routeName: (context) => const ForGetPassword(),
+            ForGetPassword.routeName: (context) => ForGetPassword(),
             ButtonNavigationBarScreen.routeName: (context) =>
                 const ButtonNavigationBarScreen(),
             ChatScreen.routeName: (context) => const ChatScreen(),
