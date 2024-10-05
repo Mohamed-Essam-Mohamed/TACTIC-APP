@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tactic_zone/src/feature/auth/forget_password/view/forget_password_screen.dart';
 import 'package:tactic_zone/src/feature/auth/sign_in/view/sign_in_screen.dart';
 import 'package:tactic_zone/src/feature/auth/sign_up/view/sign_up_screen.dart';
-import 'package:tactic_zone/src/feature/init/button_navigation_bar_screen.dart';
+import 'package:tactic_zone/src/feature/app_init/button_navigation_bar_screen.dart';
+import 'package:tactic_zone/src/feature/chat/view/chat_screen.dart';
 import 'package:tactic_zone/start_screen.dart';
 
 void main() {
@@ -31,6 +32,7 @@ class TacTicZone extends StatelessWidget {
             ForGetPassword.routeName: (context) => const ForGetPassword(),
             ButtonNavigationBarScreen.routeName: (context) =>
                 const ButtonNavigationBarScreen(),
+            ChatScreen.routeName: (context) => const ChatScreen(),
           },
         );
       },

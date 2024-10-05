@@ -46,6 +46,12 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   Gap(50.h),
                   TextFormFiledWidget(
+                    hintText: "username",
+                    validator: (text) {},
+                    controller: TextEditingController(),
+                  ),
+                  Gap(32.h),
+                  TextFormFiledWidget(
                     hintText: "email",
                     validator: (text) {},
                     controller: TextEditingController(),
@@ -54,12 +60,8 @@ class SignUpScreen extends StatelessWidget {
                   TextFormFiledWidget(
                     hintText: "password",
                     validator: (text) {},
-                    controller: TextEditingController(),
-                  ),
-                  Gap(32.h),
-                  TextFormFiledWidget(
-                    hintText: "confirm password",
-                    validator: (text) {},
+                    isObscureText: true,
+                    showObscureText: true,
                     controller: TextEditingController(),
                   ),
                   Gap(20.h),

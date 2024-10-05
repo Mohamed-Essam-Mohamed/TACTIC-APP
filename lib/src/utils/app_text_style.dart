@@ -8,6 +8,11 @@ class AppTextStyle {
     color: AppColor.withColor,
     fontSize: 40.sp,
   );
+  static TextStyle textStyle30 = GoogleFonts.acme(
+    fontSize: 30.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColor.withColor,
+  );
   static TextStyle textStyle20 = GoogleFonts.abel(
     color: AppColor.blackColor,
     fontSize: 20.sp,
