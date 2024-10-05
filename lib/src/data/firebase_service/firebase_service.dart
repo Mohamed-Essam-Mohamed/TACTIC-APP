@@ -20,8 +20,8 @@ class FirebaseService {
   }
 
   //* get user
-  static Future<AppUser> getUser(AppUser user) async {
-    var _response = await getCollectionUsers().doc(user.id).get();
+  static Future<AppUser> getUser(String userId) async {
+    var _response = await getCollectionUsers().doc(userId).get();
     return _response.data()!;
   }
 }
