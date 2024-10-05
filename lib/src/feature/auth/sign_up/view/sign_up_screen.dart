@@ -32,7 +32,7 @@ class SignUpScreen extends StatelessWidget {
           if (state is ErrorSignUpViewModel) {
             Navigator.pop(context);
             return AppDialog.showMessage(
-                context: context, message: state.message);
+                context: context, message: state.message!);
           }
           if (state is SuccessSignUpViewModel) {
             Navigator.pushNamed(context, ButtonNavigationBarScreen.routeName);

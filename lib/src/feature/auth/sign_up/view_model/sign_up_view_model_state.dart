@@ -10,7 +10,7 @@ class LoadingSignUpViewModel extends SignUpViewModelState {}
 class SuccessSignUpViewModel extends SignUpViewModelState {}
 
 class ErrorSignUpViewModel extends SignUpViewModelState {
-  final String message;
+  String? message;
 
   ErrorSignUpViewModel(this.message);
 }

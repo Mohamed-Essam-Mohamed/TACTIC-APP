@@ -55,6 +55,7 @@ class AppDialog {
               color: AppColor.withColor,
             ),
             overflow: TextOverflow.ellipsis,
+            maxLines: 3,
           ),
           actions: [
             TextButton(

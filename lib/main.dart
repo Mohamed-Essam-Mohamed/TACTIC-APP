@@ -43,7 +43,7 @@ class TacTicZone extends StatelessWidget {
           initialRoute: initRoute,
           routes: {
             StartScreen.routeName: (context) => const StartScreen(),
-            SignInScreen.routeName: (context) => const SignInScreen(),
+            SignInScreen.routeName: (context) => SignInScreen(),
             SignUpScreen.routeName: (context) => SignUpScreen(),
             ForGetPassword.routeName: (context) => const ForGetPassword(),
             ButtonNavigationBarScreen.routeName: (context) =>

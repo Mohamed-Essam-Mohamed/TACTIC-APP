@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:tactic_zone/src/feature/auth/sign_in/view/sign_in_screen.dart';
+import 'package:tactic_zone/src/utils/app_color.dart';
+import 'package:tactic_zone/src/utils/app_shared_preferences.dart';
 import 'package:tactic_zone/src/utils/app_text_style.dart';
 import 'package:tactic_zone/src/widget/button_app_widget.dart';
 
@@ -50,7 +54,20 @@ class ProfileScreen extends StatelessWidget {
                       onPressed: () {},
                       fonSize: 24,
                       minWidth: 200,
-                    )
+                    ),
+                    Gap(20.h),
+                    ButtonAppWidget(
+                      text: "Logout",
+                      onPressed: () async {
+                        SharedPreferencesUtils.removeData(key: "token");
+                        await FirebaseAuth.instance.signOut();
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            SignInScreen.routeName, (r) => false);
+                      },
+                      color: AppColor.redColor,
+                      fonSize: 24,
+                      minWidth: 200,
+                    ),
                   ],
                 ),
               ),
