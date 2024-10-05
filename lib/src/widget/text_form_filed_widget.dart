@@ -50,13 +50,15 @@ class _TextFormFiledWidgetState extends State<TextFormFiledWidget> {
         hintStyle: AppTextStyle.textStyle20,
         errorStyle: AppTextStyle.textStyle20.copyWith(
           color: AppColor.redColor,
-          fontSize: 13,
+          fontSize: 14,
+          height: 0,
         ),
         errorMaxLines: 1,
         suffixIcon: widget.showObscureText == true ? logicIcon() : null,
         enabledBorder: customOutLineInputBorder(color: Colors.transparent),
         errorBorder: customOutLineInputBorder(color: AppColor.redColor),
         focusedBorder: customOutLineInputBorder(color: AppColor.primaryColor),
+        focusedErrorBorder: customOutLineInputBorder(color: AppColor.redColor),
       ),
     );
   }
