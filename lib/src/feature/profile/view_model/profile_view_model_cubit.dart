@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:tactic_zone/src/data/firebase_service/firebase_service.dart';
-import 'package:tactic_zone/src/data/model/app_user.dart';
+import 'package:tactic_zone/src/data/models/app_user.dart';
 
 import '../../../utils/app_shared_preferences.dart';
 

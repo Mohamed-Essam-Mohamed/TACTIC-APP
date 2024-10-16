@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tactic_zone/src/data/model/app_user.dart';
+import 'package:tactic_zone/src/data/models/app_user.dart';
 
 class FirebaseService {
   //* collection User
