@@ -5,11 +5,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tactic_zone/firebase_options.dart';
+import 'package:tactic_zone/src/app/constant/api_const/api_const.dart';
+import 'package:tactic_zone/src/data/api/api_manage.dart';
+import 'package:tactic_zone/src/data/models/request/message_request.dart';
 import 'package:tactic_zone/src/feature/auth/forget_password/view/forget_password_screen.dart';
 import 'package:tactic_zone/src/feature/auth/sign_in/view/sign_in_screen.dart';
 import 'package:tactic_zone/src/feature/auth/sign_up/view/sign_up_screen.dart';
 import 'package:tactic_zone/src/feature/app_init/button_navigation_bar_screen.dart';
 import 'package:tactic_zone/src/feature/chat/view/chat_screen.dart';
+import 'package:tactic_zone/src/feature/chat/view_model/chat_view_model_cubit.dart';
 import 'package:tactic_zone/src/utils/app_shared_preferences.dart';
 import 'package:tactic_zone/start_screen.dart';
 
@@ -24,6 +28,19 @@ void main() async {
   if (getToken != null) {
     initRoute = ButtonNavigationBarScreen.routeName;
   }
+  log("before responseChatMessage");
+//   await ApiManage.responseChatMessage(
+//     message: "What is the best team formation?",
+//     messageRequest: MessageRequest(
+//       files: FilesData(
+//         bestFormationsUrl: ApiConst.bestFormationsUrl,
+//         generatedPlayerDataUrl: ApiConst.generatedPlayerDataUrl,
+//         myTeamUrl: ApiConst.myTeamUrl,
+//         opponentTeamUrl: ApiConst.opponentTeamUrl,
+//         selectedPlayersUrl: ApiConst.selectedPlayersUrl,
+//       ),
+//     ),
+//   );
 
   runApp(TacTicZone(
     initRoute: initRoute,

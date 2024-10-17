@@ -17,4 +17,8 @@ class AppTextStyle {
     color: AppColor.blackColor,
     fontSize: 20.sp,
   );
+  static TextStyle textStyle18 = GoogleFonts.acme(
+    color: AppColor.withColor,
+    fontSize: 18.sp,
+  );
 }

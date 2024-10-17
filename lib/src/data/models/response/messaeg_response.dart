@@ -1,7 +1,9 @@
 class MessageResponse {
   String? response;
+  DateTime? dateTime = DateTime.now();
+  SenderType senderType = SenderType.user;
 
-  MessageResponse({this.response});
+  MessageResponse({this.response, this.senderType = SenderType.user});
 
   MessageResponse.fromJson(Map<String, dynamic> json) {
     response = json['response'];
@@ -13,3 +15,5 @@ class MessageResponse {
     return data;
   }
 }
+
+enum SenderType { user, ai }
