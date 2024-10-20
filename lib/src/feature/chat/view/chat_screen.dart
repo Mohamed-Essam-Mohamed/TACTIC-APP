@@ -15,17 +15,6 @@ import 'package:tactic_zone/src/utils/app_color.dart';
 
 import '../../../utils/app_text_style.dart';
 
-List<MessageResponse> dummyMessage = [
-  MessageResponse(
-    response: "Hello",
-    senderType: SenderType.user,
-  ),
-  MessageResponse(
-    response: "Hi",
-    senderType: SenderType.ai,
-  ),
-];
-
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
 
