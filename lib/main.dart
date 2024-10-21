@@ -28,19 +28,6 @@ void main() async {
   if (getToken != null) {
     initRoute = ButtonNavigationBarScreen.routeName;
   }
-  log("before responseChatMessage");
-//   await ApiManage.responseChatMessage(
-//     message: "What is the best team formation?",
-//     messageRequest: MessageRequest(
-//       files: FilesData(
-//         bestFormationsUrl: ApiConst.bestFormationsUrl,
-//         generatedPlayerDataUrl: ApiConst.generatedPlayerDataUrl,
-//         myTeamUrl: ApiConst.myTeamUrl,
-//         opponentTeamUrl: ApiConst.opponentTeamUrl,
-//         selectedPlayersUrl: ApiConst.selectedPlayersUrl,
-//       ),
-//     ),
-//   );
 
   runApp(TacTicZone(
     initRoute: initRoute,
