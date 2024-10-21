@@ -10,6 +10,7 @@ import 'package:tactic_zone/src/app/failure/net_work_failure.dart';
 import 'package:tactic_zone/src/app/failure/server_failure.dart';
 import 'package:tactic_zone/src/data/models/request/message_request.dart';
 import 'package:tactic_zone/src/data/models/response/messaeg_response.dart';
+import 'package:tactic_zone/src/data/models/response/video_response.dart';
 
 class ApiManage {
   static Future<Either<Failure, MessageResponse>> responseChatMessage(
@@ -35,7 +36,7 @@ class ApiManage {
       if (response.statusCode == 200) {
         var responseBody = await response.stream.bytesToString();
         var data = MessageResponse.fromJson(jsonDecode(responseBody));
-
+        log(data.response.toString());
         return Right(data);
       } else {
         return Left(ServerFailure(
@@ -45,12 +46,58 @@ class ApiManage {
       return Left(NetworkFailure(errorMessage: "No internet connection"));
     }
   }
+
+  static Future<Either<Failure, VideoResponse>> uploadLinkVideo(
+      {required String firstVideo, required String secondVideo}) async {
+    log('in function');
+    final List<ConnectivityResult> connectivityResult =
+        await (Connectivity().checkConnectivity());
+
+    if (connectivityResult.contains(ConnectivityResult.mobile) ||
+        connectivityResult.contains(ConnectivityResult.wifi)) {
+      var headers = {'Content-Type': 'application/json'};
+      var request = http.Request(
+        'POST',
+        Uri.parse('https://bb7a-35-204-168-212.ngrok-free.app/process_videos'),
+      );
+      request.body = json.encode({
+        "video_paths": ["$firstVideo", "$secondVideo"]
+      });
+      request.headers.addAll(headers);
+
+      http.StreamedResponse response = await request.send();
+
+      if (response.statusCode == 200) {
+        var responseBody = await response.stream.bytesToString();
+        var registerResponse = VideoResponse.fromJson(jsonDecode(responseBody));
+        log(registerResponse.message.toString());
+        return Right(registerResponse);
+      } else {
+        log('errro');
+        return Left(ServerFailure(errorMessage: "Error processing request"));
+      }
+    } else {
+      log('No internet connection');
+      return Left(NetworkFailure(errorMessage: "No internet connection"));
+    }
+  }
+
+  getResponseDataVideo() async {
+    final List<ConnectivityResult> connectivityResult =
+        await (Connectivity().checkConnectivity());
+    if (connectivityResult.contains(ConnectivityResult.mobile) ||
+        connectivityResult.contains(ConnectivityResult.wifi)) {
+      //! code get response link video
+    } else {
+      return Left(NetworkFailure(errorMessage: "No internet connection"));
+    }
+  }
 }
 
 
 
 
- // MessageRequest messageRequest =
+// MessageRequest messageRequest =
 //  MessageRequest(
 //       files: FilesData(
 //         bestFormationsUrl: ApiConst.bestFormationsUrl,

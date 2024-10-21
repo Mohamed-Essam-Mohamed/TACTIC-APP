@@ -14,6 +14,8 @@ class TextFormFiledWidget extends StatefulWidget {
   final TextEditingController? controller;
   final EdgeInsetsGeometry? contentPadding;
   final keyboardtype;
+  final Color? colorHintText;
+  final double? fontSizeStyle;
 
   TextFormFiledWidget({
     this.isObscureText = false,
@@ -23,6 +25,8 @@ class TextFormFiledWidget extends StatefulWidget {
     this.keyboardtype = TextInputType.name,
     this.contentPadding,
     required this.controller,
+    this.fontSizeStyle,
+    this.colorHintText,
   });
 
   @override
@@ -37,9 +41,7 @@ class _TextFormFiledWidgetState extends State<TextFormFiledWidget> {
       validator: widget.validator,
       keyboardType: widget.keyboardtype,
       controller: widget.controller,
-      style: TextStyle(
-        fontSize: 20.sp,
-      ),
+      style: AppTextStyle.textStyle20.copyWith(fontSize: widget.fontSizeStyle),
       decoration: InputDecoration(
         fillColor: AppColor.withColor,
         filled: true,
@@ -47,7 +49,8 @@ class _TextFormFiledWidgetState extends State<TextFormFiledWidget> {
             ? EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h)
             : widget.contentPadding,
         hintText: widget.hintText,
-        hintStyle: AppTextStyle.textStyle20,
+        hintStyle:
+            AppTextStyle.textStyle20.copyWith(color: widget.colorHintText),
         errorStyle: AppTextStyle.textStyle20.copyWith(
           color: AppColor.redColor,
           fontSize: 14,

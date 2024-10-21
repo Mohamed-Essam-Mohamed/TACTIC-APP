@@ -20,11 +20,7 @@ class ButtonNavigationBarScreen extends StatefulWidget {
 }
 
 class _ButtonNavigationBarScreenState extends State<ButtonNavigationBarScreen> {
-  List<Widget> screensRoutes = const [
-    HomeScreen(),
-    UploadScreen(),
-    ProfileScreen()
-  ];
+  List<Widget> screensRoutes = [HomeScreen(), UploadScreen(), ProfileScreen()];
   int currentIndex = 1;
   @override
   Widget build(BuildContext context) {
