@@ -191,13 +191,13 @@ class PlayersRecommendations {
 }
 
 class OpponentAnalysis {
-  OpponentAnalysisIn? opponentAnalysis;
+  OpponentAnalysisIn? opponentAnalysisIn;
   List<String>? additionalNotes;
 
-  OpponentAnalysis({this.opponentAnalysis, this.additionalNotes});
+  OpponentAnalysis({this.opponentAnalysisIn, this.additionalNotes});
 
   OpponentAnalysis.fromJson(Map<String, dynamic> json) {
-    opponentAnalysis = json['opponent_analysis'] != null
+    opponentAnalysisIn = json['opponent_analysis'] != null
         ? OpponentAnalysisIn.fromJson(json['opponent_analysis'])
         : null;
     additionalNotes = json['additional_notes'];
