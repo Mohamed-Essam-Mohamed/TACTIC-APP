@@ -31,78 +31,81 @@ class UploadScreen extends StatelessWidget {
               context: context, message: "Videos are being processed");
         }
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20.w),
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50.r),
-              image: const DecorationImage(
-                image: AssetImage("assets/image/rectangle-profile.png"),
-                fit: BoxFit.fill,
+      child: Form(
+        key: viewModel.formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.r),
+                image: const DecorationImage(
+                  image: AssetImage("assets/image/rectangle-profile.png"),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Gap(40.h),
+                  Text(
+                    "Your team match",
+                    style: AppTextStyle.textStyle30,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  TextFormFiledWidget(
+                    fontSizeStyle: 17.sp,
+                    controller: viewModel.firstVideoController,
+                    hintText: 'https://drive.google.com....',
+                    colorHintText: Colors.grey,
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return "Please enter your team match";
+                      }
+                      return null;
+                    },
+                    contentPadding: EdgeInsets.all(5.h),
+                  ),
+                  Gap(40.h),
+                  Text(
+                    "Your opponent match",
+                    style: AppTextStyle.textStyle30,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  TextFormFiledWidget(
+                    fontSizeStyle: 17.sp,
+                    hintText: 'https://drive.google.com....',
+                    colorHintText: Colors.grey,
+                    controller: viewModel.secondVideoVideoController,
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return "Please enter your opponent match";
+                      }
+                      return null;
+                    },
+                    contentPadding: EdgeInsets.all(5.h),
+                  ),
+                  Gap(40.h),
+                  Align(
+                    alignment: Alignment.center,
+                    child: ButtonAppWidget(
+                      onPressed: () async {
+                        //! TODO: upload
+                        await viewModel.uploadVideo();
+                      },
+                      text: "Upload",
+                      minWidth: 190,
+                    ),
+                  ),
+                  Gap(40.h),
+                ],
               ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Gap(40.h),
-                Text(
-                  "Your team match",
-                  style: AppTextStyle.textStyle30,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                TextFormFiledWidget(
-                  fontSizeStyle: 17.sp,
-                  controller: viewModel.firstVideoController,
-                  hintText: 'https://drive.google.com....',
-                  colorHintText: Colors.grey,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return "Please enter your team match";
-                    }
-                    return null;
-                  },
-                  contentPadding: EdgeInsets.all(5.h),
-                ),
-                Gap(40.h),
-                Text(
-                  "Your opponent match",
-                  style: AppTextStyle.textStyle30,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                TextFormFiledWidget(
-                  fontSizeStyle: 17.sp,
-                  hintText: 'https://drive.google.com....',
-                  colorHintText: Colors.grey,
-                  controller: viewModel.secondVideoVideoController,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return "Please enter your opponent match";
-                    }
-                    return null;
-                  },
-                  contentPadding: EdgeInsets.all(5.h),
-                ),
-                Gap(40.h),
-                Align(
-                  alignment: Alignment.center,
-                  child: ButtonAppWidget(
-                    onPressed: () async {
-                      //! TODO: upload
-                      await viewModel.uploadVideo();
-                    },
-                    text: "Upload",
-                    minWidth: 190,
-                  ),
-                ),
-                Gap(40.h),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

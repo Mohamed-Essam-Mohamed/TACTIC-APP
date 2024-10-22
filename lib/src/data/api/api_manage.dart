@@ -9,6 +9,7 @@ import 'package:tactic_zone/src/app/failure/failuer.dart';
 import 'package:tactic_zone/src/app/failure/net_work_failure.dart';
 import 'package:tactic_zone/src/app/failure/server_failure.dart';
 import 'package:tactic_zone/src/data/models/request/message_request.dart';
+import 'package:tactic_zone/src/data/models/response/data_response_video.dart';
 import 'package:tactic_zone/src/data/models/response/messaeg_response.dart';
 import 'package:tactic_zone/src/data/models/response/video_response.dart';
 
@@ -48,7 +49,9 @@ class ApiManage {
   }
 
   static Future<Either<Failure, VideoResponse>> uploadLinkVideo(
-      {required String firstVideo, required String secondVideo}) async {
+      {required String firstVideo,
+      required String secondVideo,
+      required String url}) async {
     log('in function');
     final List<ConnectivityResult> connectivityResult =
         await (Connectivity().checkConnectivity());
@@ -58,7 +61,7 @@ class ApiManage {
       var headers = {'Content-Type': 'application/json'};
       var request = http.Request(
         'POST',
-        Uri.parse('https://bb7a-35-204-168-212.ngrok-free.app/process_videos'),
+        Uri.parse('$url/process_videos'),
       );
       request.body = json.encode({
         "video_paths": ["$firstVideo", "$secondVideo"]
@@ -82,12 +85,19 @@ class ApiManage {
     }
   }
 
-  getResponseDataVideo() async {
+  static Future<Either<Failure, DataResponseVideo>> getResponseDataVideo(
+      {required String url}) async {
     final List<ConnectivityResult> connectivityResult =
         await (Connectivity().checkConnectivity());
     if (connectivityResult.contains(ConnectivityResult.mobile) ||
         connectivityResult.contains(ConnectivityResult.wifi)) {
-      //! code get response link video
+      var request = http.Request('GET', Uri.parse('$url/get_json_outputs'));
+
+      http.StreamedResponse response = await request.send();
+      log(response.statusCode.toString());
+
+      return Right(DataResponseVideo.fromJson(
+          jsonDecode(await response.stream.bytesToString())));
     } else {
       return Left(NetworkFailure(errorMessage: "No internet connection"));
     }
