@@ -7,14 +7,16 @@ import 'package:tactic_zone/src/utils/app_text_style.dart';
 import '../../../../utils/app_color.dart';
 
 class ContainerTileWidget extends StatelessWidget {
-  ContainerTileWidget(
+  const ContainerTileWidget(
       {super.key,
       required this.nameMatch,
-      this.onTapChat,
+      required this.onTapChat,
+      required this.supTitel,
       required this.onTapTactic});
   final String nameMatch;
-  void Function()? onTapChat;
-  void Function()? onTapTactic;
+  final void Function()? onTapChat;
+  final void Function()? onTapTactic;
+  final String supTitel;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class ContainerTileWidget extends StatelessWidget {
                 style: AppTextStyle.textStyle30,
               ),
               Text(
-                "finished...",
+                supTitel,
                 style: AppTextStyle.textStyle20
                     .copyWith(color: AppColor.withColor, fontSize: 24),
               ),

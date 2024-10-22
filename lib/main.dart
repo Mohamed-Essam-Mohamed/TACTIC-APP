@@ -28,7 +28,6 @@ void main() async {
   if (getToken != null) {
     initRoute = ButtonNavigationBarScreen.routeName;
   }
-
   runApp(TacTicZone(
     initRoute: initRoute,
   ));
